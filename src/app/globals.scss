@@ -1,0 +1,128 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 255, 255, 255;
+  --accent-color: 135, 9, 232;
+  --primary-color: 8, 2, 245;
+  --font-family: "Inter", sans-serif;
+}
+
+@layer utilities {
+  .btn {
+    font-size: 14px;
+    padding: 8px 14px;
+    border-radius: 5px;
+  }
+
+  .btn-primary {
+    @apply btn;
+    background-color: rgba(var(--primary-color), 1);
+
+    &:hover {
+      @keyframes shimmer {
+        0% {
+          background-position: top left;
+        }
+        100% {
+          background-position: bottom right;
+        }
+      }
+      background-image: linear-gradient(
+        135deg,
+        rgba(var(--primary-color), 1) 0%,
+        rgba(var(--accent-color), 1) 100%
+      );
+      background-size: 200% 200%;
+      animation-name: shimmer;
+      animation-duration: 1s;
+      animation-iteration-count: infinite;
+      animation-direction: alternate;
+      animation-timing-function: ease-in-out;
+    }
+  }
+
+  .btn-secondary {
+    @apply btn;
+    background-color: rgba(var(--foreground-rgb), 0.15);
+
+    &:hover {
+      @keyframes shimmer {
+        0% {
+          background-position: top left;
+        }
+        100% {
+          background-position: bottom right;
+        }
+      }
+      background-image: linear-gradient(
+        135deg,
+        rgba(var(--primary-color), 1) 0%,
+        rgba(var(--accent-color), 1) 100%
+      );
+      background-size: 200% 200%;
+      animation-name: shimmer;
+      animation-duration: 1s;
+      animation-iteration-count: infinite;
+      animation-direction: alternate;
+      animation-timing-function: ease-in-out;
+    }
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2.4rem;
+
+    label {
+      @apply text-sm md:text-lg;
+      margin-bottom: 0.5rem;
+    }
+
+    input {
+      @apply text-sm md:text-base px-4 py-2 rounded-md;
+      background-color: rgba(var(--foreground-rgb), 0.15);
+    }
+  }
+
+  .form-buttons {
+    text-align: right;
+  }
+}
+
+html {
+  background-color: black;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to top right,
+      transparent,
+      rgba(var(--primary-color), 0.25)
+    )
+    rgba(var(--accent-color), 0.25);
+  font-size: 10px;
+  font-family: var(--font-family);
+}
+
+.circleLoader {
+  width: 24px;
+  height: 24px;
+  border: 2.5px solid #fff;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
